@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+/*
+    Greedy program
+    
+    Asks user for change and outputs least number of coins used 
+    for that change in C
+
+*/
+
+int main(void)
+ {
+   float money=0;
+   int quarters=0;
+   int dimes=0;
+   int nickels=0;
+   int pennies=0;
+   
+   do
+    {
+       printf("Please enter in an amount for change:\n");  //Asks user for input
+       money = GetFloat();
+    }while(money <=0);        //loop to go through sequence of coins
+     
+    money = money *100;
+    int cash = 0;
+    cash = (int) money;
+    quarters = (cash/25);       
+    cash = cash%25;          //using modulus operator in sequence of coins
+    dimes = (cash/10);
+    cash = cash%10;
+    nickels = (cash/5);
+    cash = cash%5;
+    pennies = cash;
+     
+    int coins = quarters + nickels + dimes + pennies;
+   
+   printf("%d quarters\n",quarters);  //Outputs number of coins
+   printf("%d nickels\n",nickels); 
+   printf("%d dimes\n",dimes); 
+   printf("%d pennies\n",pennies); 
+   printf("%d\n",coins);      //Outputs least number of coins used 
+ }
