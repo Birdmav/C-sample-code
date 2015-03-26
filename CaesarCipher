@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+
+/*
+Caesar Cipher Program
+Asks user for an input message to be encrypted using the Caesar cipher written in C
+
+*/
+
+int main(int argc, string argv[])
+
+ {
+    if(argc !=2)                       //checking for number of arguments
+     {
+       printf("Wrong number of arguments!!!");
+     }
+    
+    int alphaKey = atoi(argv[1]);      //getting cipher key for encryption
+    string plainMsg = argv[0];         //getting message to be encrypted
+    
+    plainMsg = GetString();             
+    
+    int msgLen = strlen(plainMsg);
+     
+    int cNum;
+    
+    for(int i =0; i <= msgLen;i++)     //iterates through message to encrypt using key
+     {
+       cNum = (int) plainMsg[i];
+       
+       if(cNum > 64 && cNum < 91)     //Checking if value is letter using ASCII
+        {
+          cNum = (((cNum-65) + alphaKey)%26+65);  //encrypts letter with key
+          
+          plainMsg[i] = (char)cNum;
+        }
+       else if(cNum > 96 && cNum < 123)      //same as above but for lower case letters
+        {
+          cNum = (((cNum-97) + alphaKey)%26+97);
+          
+          plainMsg[i] = (char)cNum;    //replaces old letter with ciphered letter
+        } 
+       
+     }
+ 
+   printf("%s",plainMsg);      //prints out message
+   printf("\n");
+ }
